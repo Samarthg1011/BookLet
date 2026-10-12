@@ -1,0 +1,252 @@
+{
+  "n_books": 16773,
+  "n_goodbooks": 10000,
+  "n_supplemental": 6773,
+  "n_ratings": 1493771,
+  "n_users": 13356,
+  "shelves": [
+    "Fantasy",
+    "Science Fiction",
+    "Mystery & Crime",
+    "Thriller & Suspense",
+    "Horror",
+    "Romance",
+    "Historical Fiction",
+    "Classics",
+    "Contemporary Fiction",
+    "Young Adult",
+    "Children's",
+    "Comics & Graphic",
+    "Poetry",
+    "Biography & Memoir",
+    "History",
+    "Science & Nature",
+    "Technology & Coding",
+    "Business & Economics",
+    "Self-Help & Habits",
+    "Psychology",
+    "Philosophy",
+    "Spirituality & Faith",
+    "Travel & Adventure",
+    "Health & Wellbeing",
+    "Food & Cooking",
+    "Indian Writing"
+  ],
+  "per_category": {
+    "Young Adult": 2021,
+    "Science Fiction": 1122,
+    "Fantasy": 2382,
+    "Horror": 1147,
+    "Classics": 1435,
+    "Romance": 2103,
+    "Contemporary Fiction": 2400,
+    "Mystery & Crime": 1746,
+    "Thriller & Suspense": 1265,
+    "Historical Fiction": 1191,
+    "Biography & Memoir": 901,
+    "History": 664,
+    "Children's": 930,
+    "Travel & Adventure": 369,
+    "Poetry": 193,
+    "Science & Nature": 665,
+    "Business & Economics": 762,
+    "Psychology": 287,
+    "Spirituality & Faith": 731,
+    "Philosophy": 380,
+    "Comics & Graphic": 607,
+    "Self-Help & Habits": 621,
+    "Indian Writing": 403,
+    "Food & Cooking": 453,
+    "Health & Wellbeing": 423,
+    "Technology & Coding": 535
+  },
+  "category_keywords": {
+    "Fantasy": [
+      "fantasy",
+      "high-fantasy",
+      "epic-fantasy",
+      "urban-fantasy",
+      "magic",
+      "dragons"
+    ],
+    "Science Fiction": [
+      "science-fiction",
+      "sci-fi",
+      "scifi",
+      "dystopia",
+      "dystopian",
+      "space",
+      "cyberpunk",
+      "time-travel"
+    ],
+    "Mystery & Crime": [
+      "mystery",
+      "crime",
+      "detective",
+      "noir",
+      "murder",
+      "whodunit"
+    ],
+    "Thriller & Suspense": [
+      "thriller",
+      "suspense",
+      "espionage",
+      "spy"
+    ],
+    "Horror": [
+      "horror",
+      "gothic",
+      "vampires",
+      "zombies",
+      "ghosts",
+      "supernatural"
+    ],
+    "Romance": [
+      "romance",
+      "love",
+      "chick-lit",
+      "romantic"
+    ],
+    "Historical Fiction": [
+      "historical-fiction",
+      "historical",
+      "wwii",
+      "world-war-ii"
+    ],
+    "Classics": [
+      "classics",
+      "classic",
+      "literature",
+      "literary-fiction"
+    ],
+    "Contemporary Fiction": [
+      "contemporary",
+      "fiction",
+      "modern",
+      "novel"
+    ],
+    "Young Adult": [
+      "young-adult",
+      "ya",
+      "teen",
+      "coming-of-age"
+    ],
+    "Children's": [
+      "childrens",
+      "children",
+      "picture-books",
+      "middle-grade",
+      "juvenile"
+    ],
+    "Comics & Graphic": [
+      "graphic-novels",
+      "graphic-novel",
+      "comics",
+      "manga",
+      "superheroes"
+    ],
+    "Poetry": [
+      "poetry",
+      "poems",
+      "verse"
+    ],
+    "Biography & Memoir": [
+      "biography",
+      "memoir",
+      "autobiography"
+    ],
+    "History": [
+      "history",
+      "war",
+      "military-history",
+      "ancient",
+      "medieval"
+    ],
+    "Science & Nature": [
+      "science",
+      "physics",
+      "biology",
+      "astronomy",
+      "evolution",
+      "medicine",
+      "nature"
+    ],
+    "Technology & Coding": [
+      "technology",
+      "programming",
+      "computer-science",
+      "software",
+      "coding",
+      "data-science",
+      "artificial-intelligence"
+    ],
+    "Business & Economics": [
+      "business",
+      "economics",
+      "management",
+      "leadership",
+      "entrepreneurship",
+      "finance",
+      "marketing"
+    ],
+    "Self-Help & Habits": [
+      "self-help",
+      "selfhelp",
+      "personal-development",
+      "productivity",
+      "habits",
+      "motivational"
+    ],
+    "Psychology": [
+      "psychology",
+      "behavior",
+      "neuroscience",
+      "mental-health",
+      "cognitive"
+    ],
+    "Philosophy": [
+      "philosophy",
+      "existentialism",
+      "stoicism",
+      "ethics"
+    ],
+    "Spirituality & Faith": [
+      "spirituality",
+      "religion",
+      "christian",
+      "buddhism",
+      "faith",
+      "islam",
+      "theology"
+    ],
+    "Travel & Adventure": [
+      "travel",
+      "adventure",
+      "survival",
+      "exploration"
+    ],
+    "Health & Wellbeing": [
+      "health",
+      "fitness",
+      "nutrition",
+      "diet",
+      "wellness",
+      "mindfulness"
+    ],
+    "Food & Cooking": [
+      "cookbooks",
+      "cooking",
+      "food",
+      "recipes",
+      "baking"
+    ],
+    "Indian Writing": [
+      "india",
+      "indian",
+      "indian-authors",
+      "desi"
+    ]
+  },
+  "dataset": "goodbooks-10k + Open Library",
+  "built_at": "2026-07-29 16:24"
+}

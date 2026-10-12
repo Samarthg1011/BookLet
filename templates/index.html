@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BooKlet — Books, chosen precisely for you</title>
+<meta name="description" content="BooKlet — a hybrid book recommendation engine by Samarth Galande. Rate books you've read, receive curated selections with reasons across 26 categories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="bar">
+  <a class="logo" href="#" data-nav="selections">Boo<em>Klet</em></a>
+  <div class="links">
+    <button class="navlink active" data-nav="selections">Selections</button>
+    <button class="navlink" data-nav="archive">Archive</button>
+    <button class="navlink" data-nav="profile">Taste Profile <span class="pill" id="rateCount">0</span></button>
+    <button class="navlink" data-nav="list">Reading List <span class="pill" id="listCount">0</span></button>
+  </div>
+  <div class="searchbox" id="searchBox">
+    <input id="searchInput" type="search" placeholder="Search titles &amp; authors…" autocomplete="off" aria-label="Search books">
+    <div class="search-results" id="searchResults" hidden></div>
+  </div>
+  <span class="curated mono">CURATED FOR <b>S. GALANDE</b></span>
+</nav>
+
+<main>
+
+  <!-- ============ SELECTIONS ============ -->
+  <section class="view" id="view-selections">
+    <div class="hero">
+      <div>
+        <p class="kick mono" id="heroKick">TONIGHT'S PROGRAMME</p>
+        <h1>Books, chosen<br><em>precisely</em> for you.</h1>
+      </div>
+      <div class="hero-right">
+        <p>A <b>hybrid recommendation engine</b> — collaborative filtering over
+        1.5 million Goodreads ratings, refined by a content model that reads
+        shelves, subjects and authors. <b>You rate, it learns.</b></p>
+        <div class="stats">
+          <span><b id="statRatings">0</b>ratings given</span>
+          <span><b id="statBooks">—</b>books indexed</span>
+          <span><b id="statCats">—</b>categories</span>
+          <span><b id="statSignals">—</b>reader signals</span>
+        </div>
+        <button class="btn" id="coldStart">Rate books you've read →</button>
+      </div>
+    </div>
+    <div class="films" id="selectionGrid"></div>
+  </section>
+
+  <!-- ============ ARCHIVE ============ -->
+  <section class="view" id="view-archive" hidden>
+    <div class="view-head">
+      <p class="kick mono">THE STACKS</p>
+      <h2>Archive</h2>
+      <p class="sub" id="archiveSub">Browse every shelf, ranked by your taste. Filter by category or era.</p>
+    </div>
+    <div class="chiprow" id="shelfChips"></div>
+    <div class="chiprow" id="eraChips"></div>
+    <div class="films grid-lines" id="archiveGrid"></div>
+  </section>
+
+  <!-- ============ TASTE PROFILE ============ -->
+  <section class="view" id="view-profile" hidden>
+    <div class="view-head">
+      <p class="kick mono">MARGINALIA</p>
+      <h2>Taste Profile <span class="count-inline" id="ratingsTotal"></span></h2>
+      <p class="sub">Every rating reshapes the selections. <button class="linklike" id="clearRatings">Clear all</button></p>
+    </div>
+    <div class="affinity" id="affinity"></div>
+    <div class="rate-list" id="ratingsList"></div>
+    <p class="empty" id="ratingsEmpty">Nothing rated yet — the curator awaits your verdicts.</p>
+  </section>
+
+  <!-- ============ READING LIST ============ -->
+  <section class="view" id="view-list" hidden>
+    <div class="view-head">
+      <p class="kick mono">SET ASIDE</p>
+      <h2>Reading List</h2>
+      <p class="sub">Kept in your browser, ready when you are.</p>
+    </div>
+    <div class="films grid-lines" id="listGrid"></div>
+    <p class="empty" id="listEmpty">Empty shelf — add books with the + mark.</p>
+  </section>
+
+  <footer class="foot mono">
+    <span>BOOKLET — A RECOMMENDATION HOUSE FOR READERS</span>
+    <span id="footMeta">ENGINE COLLABORATIVE + CONTENT</span>
+    <span>BY SAMARTH GALANDE · PYTHON · FLASK · SCIKIT-LEARN</span>
+  </footer>
+</main>
+
+<!-- ============ ONBOARDING MODAL ============ -->
+<div class="modal" id="onboardModal" hidden>
+  <div class="modal-card wide">
+    <div class="modal-head">
+      <div>
+        <p class="kick mono">FIRST, YOUR VERDICTS</p>
+        <h3>Rate books you've read</h3>
+        <p class="sub">Three or more ratings unlock your personal selections.</p>
+      </div>
+      <button class="x" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="onboard-grid" id="onboardGrid"></div>
+    <div class="modal-foot mono">
+      <span id="onboardCount">0 RATED</span>
+      <button class="btn" id="onboardDone" disabled>Show my selections →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BOOK MODAL ============ -->
+<div class="modal" id="bookModal" hidden>
+  <div class="modal-card">
+    <div class="bm-swatch" id="bmSwatch"><span class="mono" id="bmSwatchLabel"></span></div>
+    <div class="modal-head">
+      <div>
+        <h3 id="bmTitle" class="serif"></h3>
+        <p class="sub" id="bmMeta"></p>
+      </div>
+      <button class="x" data-close aria-label="Close">✕</button>
+    </div>
+    <p class="bm-reason serif" id="bmReason"></p>
+    <div class="bm-controls">
+      <div class="stars lg" id="bmStars" role="radiogroup" aria-label="Your rating"></div>
+      <button class="btn btn-sm" id="bmList">＋ Reading list</button>
+    </div>
+    <h4 class="bm-sub mono">READERS SHELVED NEXT</h4>
+    <div class="bm-similar" id="bmSimilar"></div>
+  </div>
+</div>
+
+<div class="toast mono" id="toast" hidden></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

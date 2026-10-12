@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+
+# The raw CSV dumps are large and re-downloadable...
+data/raw/*
+# ...but keep the small API caches so a deploy doesn't re-crawl Open Library.
+!data/raw/openlibrary.json
+!data/raw/isbn_covers.json
+data/live_titles.json
