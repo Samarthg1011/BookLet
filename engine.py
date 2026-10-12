@@ -252,20 +252,29 @@ class Engine:
                 break
         return found
 
+    @staticmethod
+    def _words(text):
+        """Lower-case, punctuation-free words so "Rich Dad Poor Dad" finds "Rich Dad, Poor Dad"."""
+        return " ".join(re.sub(r"[^a-z0-9 ]", "", (text or "").lower().replace("'", "")).split())
+
     def search(self, q, n=20):
         q = (q or "").strip().lower()
         if len(q) < 2:
             return []
-        starts, contains = [], []
+        qw = self._words(q)
+        exact, starts, contains = [], [], []
         for b in self.by_id.values():
-            t, a = b["title"].lower(), b["author"].lower()
-            if t.startswith(q) or a.startswith(q):
+            t, a = self._words(b["title"]), self._words(b["author"])
+            core = self._words(b["title"].split(" (")[0])   # "Title (Series, #1)" -> "Title"
+            if qw in (t, core, re.sub(r"^(the|a|an) ", "", core)):
+                exact.append(b)
+            elif t.startswith(qw) or a.startswith(qw):
                 starts.append(b)
-            elif q in t or q in a:
+            elif qw in t or qw in a:
                 contains.append(b)
-        starts.sort(key=lambda b: b["pop"], reverse=True)
-        contains.sort(key=lambda b: b["pop"], reverse=True)
-        local = [self._card(b) for b in (starts + contains)[:n]]
+        for grp in (exact, starts, contains):
+            grp.sort(key=lambda b: b["pop"], reverse=True)
+        local = [self._card(b) for b in (exact + starts + contains)[:n]]
         # thin results usually mean the book simply isn't in the dump — go find it
         if len(local) < 5:
             local += self._search_live(q, limit=max(4, n - len(local)))
